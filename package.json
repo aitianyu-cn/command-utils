@@ -1,0 +1,79 @@
+{
+    "name": "@aitianyu.cn/command-utils",
+    "version": "0.0.1",
+    "description": "Tianyu node command utils to provide command handling, processing and other functions",
+    "main": "./dist/lib/index.js",
+    "types": "./dist/types/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/types/index.d.ts",
+            "import": "./dist/lib/index.js",
+            "require": "./dist/lib/index.js",
+            "node": "./dist/lib/index.js",
+            "default": "./dist/lib/index.js"
+        },
+        "./command": {
+            "types": "./dist/types/command/index.d.ts",
+            "import": "./dist/lib/command/index.js",
+            "require": "./dist/lib/command/index.js",
+            "node": "./dist/lib/command/index.js",
+            "default": "./dist/lib/command/index.js"
+        }
+    },
+    "typesVersions": {
+        "*": {
+            "*": [
+                "./dist/types/index.d.ts"
+            ],
+            "command": [
+                "./dist/types/command/index.d.ts"
+            ]
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "type": "commonjs",
+    "scripts": {
+        "build": "npm run before-build && npm run compiler && npm run copy-lib && npm run copy-types && npm run copy-res && npm run after-build",
+        "compiler": "tsc  && tsc-alias",
+        "copy-lib": "copyfiles -u 2 \"build/package/**/*.js\" dist/lib",
+        "copy-res": "copyfiles -u 1 \"package/**/*.json\" dist/lib",
+        "copy-types": "copyfiles -u 2 \"build/package/**/*.d.ts\" dist/types",
+        "before-build": "rimraf ./dist ./build",
+        "after-build": "rimraf ./build",
+        "test": "jest --no-cache --verbose",
+        "test-all": "jest --no-cache --verbose --coverage",
+        "test-coverage": "jest --no-cache --coverage"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/aitianyu-cn/command-utils.git"
+    },
+    "bugs": {
+        "url": "https://github.com/aitianyu-cn/command-utils/issues"
+    },
+    "homepage": "https://github.com/aitianyu-cn/command-utils#readme",
+    "keywords": [
+        "aitianyu.cn",
+        "commander",
+        "utils"
+    ],
+    "author": "dev@aitianyu.cn",
+    "license": "ISC",
+    "dependencies": {
+        "@aitianyu.cn/types": "latest"
+    },
+    "devDependencies": {
+        "@types/jest": "^29.2.4",
+        "@types/node": "^18.11.13",
+        "copyfiles": "^2.4.1",
+        "jest": "^29.3.1",
+        "jest-html-reporters": "^3.0.11",
+        "rimraf": "^3.0.2",
+        "ts-jest": "^29.0.3",
+        "ts-node": "^10.9.1",
+        "tsc-alias": "^1.8.2",
+        "typescript": "^4.9.4"
+    }
+}
