@@ -22,7 +22,9 @@
         "baseUrl": ".",
         "outDir": "./build",
         "paths": {
-            "command/*": ["package/command/*"]
+            "command/*": ["package/command/*"],
+            "runner/*": ["package/runner/*"],
+            "interfaces/*": ["package/interfaces/*"]
         }
     }
 }
